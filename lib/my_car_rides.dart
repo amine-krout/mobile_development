@@ -1,12 +1,15 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
-import 'package:la_corda_car_rental/my_ride.dart';
-import 'package:la_corda_car_rental/widget/custom_button_2.dart';
+import 'package:la_corda_car_rental/widget/block_builder_rides.dart';
+import 'package:la_corda_car_rental/widget/custom_button_3.dart';
 
 class Book_Ride extends StatelessWidget {
   const Book_Ride({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -31,7 +34,25 @@ class Book_Ride extends StatelessWidget {
                 color: Color(0xff003045)),
           ),
         ),
-        body: SafeArea(
+        body: Scrollbar(
+          child: ListView.separated(
+              itemBuilder: (context, index) => const Block_Builder_Rides(),
+              separatorBuilder: (context, index) => const SizedBox(
+                    height: 0,
+                  ),
+              itemCount: 10),
+              isAlwaysShown: null,
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.symmetric(horizontal:70 ),
+          child: BottomAppBar(
+            child: Custom_Button_3('BOOK A RIDE'),
+            color: Colors.transparent,
+            elevation: 0,
+          ),
+        ),
+        
+        /* SafeArea(
             child: Column(
           children: [
             Padding(
@@ -75,7 +96,7 @@ class Book_Ride extends StatelessWidget {
               child: Custom_Button_2('BOOK A RIDE')
             ),
           ],
-        )),
+        )),*/
       ),
     );
   }

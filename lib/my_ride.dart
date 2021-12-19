@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:la_corda_car_rental/widget/custom_button_2.dart';
+import 'package:la_corda_car_rental/widget/block_builder_My_rides.dart';
+import 'package:la_corda_car_rental/widget/custom_button_3.dart';
 
 class My_Ride extends StatelessWidget {
   const My_Ride({Key? key}) : super(key: key);
@@ -30,7 +31,21 @@ class My_Ride extends StatelessWidget {
                 color: Color(0xff003045)),
           ),
         ),
-        body: Center(
+        body: Scrollbar(
+          child: ListView.separated(
+              itemBuilder: (context, index) => Block_Builder_My_Rides(),
+              separatorBuilder: (context, index) => SizedBox(),
+              itemCount: 10),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.symmetric(horizontal:70 ),
+          child: BottomAppBar(
+            child: Custom_Button_3('BOOK A RIDE'),
+            color: Colors.transparent,
+            elevation: 0,
+          ),
+        ), 
+        /* Center(
           child: Column(
             children: [
               Padding(
@@ -98,7 +113,7 @@ class My_Ride extends StatelessWidget {
               ),
             ],
           ),
-        ),
+        ),*/
       ),
     );
   }

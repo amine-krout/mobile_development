@@ -8,8 +8,8 @@ class Custom_Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55,
-      width: 110,
+      height: MediaQuery.of(context).size.height * 0.08,
+      width: MediaQuery.of(context).size.width * 0.4,
       decoration: BoxDecoration(
         color: const Color(0xffe9e0b2),
         borderRadius: BorderRadius.circular(27),

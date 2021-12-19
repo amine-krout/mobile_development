@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:la_corda_car_rental/widget/custom_button.dart';
 import 'package:la_corda_car_rental/widget/style_container_input.dart';
 import 'package:la_corda_car_rental/widget/text_button.dart';
+import 'package:la_corda_car_rental/home_page.dart';
 
 class Register extends StatelessWidget {
   const Register({Key? key}) : super(key: key);
@@ -86,7 +87,30 @@ class Register extends StatelessWidget {
                   Customised_container('Confirm Your Password',TextInputType.text,true),
                   Padding(
                     padding: const EdgeInsets.only(top: 10, bottom: 10),
-                    child: Custom_Button('REGISTER'),
+                    //child: Custom_Button('REGISTER'),
+                    child: Container(
+                  height: MediaQuery.of(context).size.height * 0.08,
+                  width: MediaQuery.of(context).size.width * 0.4,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffe9e0b2),
+                    borderRadius: BorderRadius.circular(27),
+                  ),
+                  child: TextButton(
+                    child: const Text(
+                      'LOGIN',
+                      style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          color: Color(0xff003045),
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=>Home(),),);
+                    },
+                  ),
+                ),
                   ),
                   const Text(
                     'Already a memeber ?',
@@ -96,7 +120,21 @@ class Register extends StatelessWidget {
                       color: Color(0xff045977),
                     ),
                   ),
-                  Text_button('Log In'),
+                  //Text_button('Log In'),
+                  TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'Log In',
+                    style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 19,
+                        decoration: TextDecoration.underline,
+                        color: Color(0xff003045)),
+                  ),
+                ),
                 ],
               ),
             ),

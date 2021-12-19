@@ -10,8 +10,8 @@ class Customised_container extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 55,
-      width: 340,
+      height: MediaQuery.of(context).size.height * 0.08,
+      width: MediaQuery.of(context).size.width * 0.85,
       decoration: BoxDecoration(
         color: const Color.fromARGB(204, 0, 48, 69),
         borderRadius: BorderRadius.circular(27),

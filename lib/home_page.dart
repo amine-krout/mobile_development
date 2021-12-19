@@ -1,40 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:la_corda_car_rental/home_page_hamburger_on.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  const Home({ Key? key }) : super(key: key);
 
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: const Color(0xff61b49e),
-        appBar: AppBar(
-          toolbarHeight: 70,
-          leading: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.dehaze,
-              size: 35,
-              color: Color.fromARGB(204, 0, 48, 69),
-            ),
-          ),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          flexibleSpace: Padding(
-            padding:
-                const EdgeInsets.only(left: 70, top: 10, right: 10, bottom: 10),
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(204, 0, 48, 69),
-                borderRadius: BorderRadius.circular(50),
+      home: Home_Main(),
+      
+    );
+  }
+}
+class Home_Main extends StatelessWidget {
+  const Home_Main({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    //double deviceWidth = MediaQuery.of(context).size.width;
+    //double deviceHeight = MediaQuery.of(context).size.height;
+
+    return SafeArea(
+        child: Scaffold(
+          backgroundColor: const Color(0xff61b49e),
+          appBar: AppBar(
+            toolbarHeight: 90,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context)=>Hamburger_On(),),);
+              },
+              icon: const Icon(
+                Icons.dehaze,
+                size: 35,
+                color: Color.fromARGB(204, 0, 48, 69),
               ),
-              child: Column(
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.symmetric(),
-                    child: Padding(
+            ),
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            flexibleSpace: Padding(
+              padding: const EdgeInsets.only(
+                  left: 70, right: 10, top: 10, bottom: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(204, 0, 48, 69),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Column(
+                  children: const [
+                    Padding(
                       padding: EdgeInsets.only(top: 10, left: 30, right: 30),
                       child: TextField(
                         decoration: InputDecoration(
@@ -55,18 +76,14 @@ class Home extends StatelessWidget {
                             color: Colors.white),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
+          body: Container(
+            ),
         ),
-        body: SafeArea(child: Column(
-          children: const  [
-            //Google_maps_API_flutter,
-          ],
-        )),
-      ),
-    );
+      );
   }
 }

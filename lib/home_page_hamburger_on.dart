@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:la_corda_car_rental/Edit_Profile.dart';
 import 'package:la_corda_car_rental/login_page.dart';
 import 'package:la_corda_car_rental/login_with_mediaquery.dart';
+import 'package:la_corda_car_rental/register_your_car.dart';
 import 'package:la_corda_car_rental/services/auth.dart';
 import 'package:la_corda_car_rental/widget/custom_button_3.dart';
 
@@ -47,6 +48,7 @@ class Hamburger_On_main extends StatelessWidget {
               width: device_height * 0.26,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Color(0xff003045)),
+              child: Image.asset('assets/images/avatar.png'),
             ),
             TextButton(
               child: const Text(
@@ -85,7 +87,14 @@ class Hamburger_On_main extends StatelessWidget {
                         fontSize: 18,
                         fontWeight: FontWeight.bold),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      parentContext ?? context,
+                      MaterialPageRoute(
+                        builder: (context) => Register_Car(),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

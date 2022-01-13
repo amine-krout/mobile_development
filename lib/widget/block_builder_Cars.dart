@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:la_corda_car_rental/car_details.dart';
+import 'package:la_corda_car_rental/models/carDetails.dart';
 
 class Block_Builder extends StatelessWidget {
-  final String modelName;
-  final double pricePerDay;
-  Block_Builder({Key? key, required this.modelName, required this.pricePerDay})
-      : super(key: key);
+  final CarDetails carDetails;
+  Block_Builder({Key? key, required this.carDetails}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,7 @@ class Block_Builder extends StatelessWidget {
               shape: BoxShape.circle,
               color: Color(0xff003045),
             ),
+            child: Image.asset('assets/images/car.png'),
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -40,7 +41,7 @@ class Block_Builder extends StatelessWidget {
                         Padding(
                           padding: EdgeInsets.only(top: 5),
                           child: Text(
-                            'CAR RENT = ${pricePerDay.toString()} £',
+                            'CAR RENT = ${carDetails.price_per_day.toString()} £',
                             style: const TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
@@ -49,7 +50,7 @@ class Block_Builder extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'MODEL NAME = ${modelName}',
+                          'MODEL NAME = ${carDetails.model}',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
@@ -61,7 +62,16 @@ class Block_Builder extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Car_Details(
+                          carDetails: carDetails,
+                        ),
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.arrow_forward,
                     size: 35,

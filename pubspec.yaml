@@ -33,7 +33,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/
+    - assets/images/avatar.png
+    - assets/images/car.png
   
   fonts:  
    - family: Montserrat  

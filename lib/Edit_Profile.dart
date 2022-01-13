@@ -65,6 +65,7 @@ class Edit_Profile_Main extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: Color(0xffE9E0B2),
                   ),
+                  child: Image.asset('assets/images/avatar.png'),
                 ),
               ),
               Custom_Button_3('EDIT PROFILE'),

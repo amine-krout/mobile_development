@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:la_corda_car_rental/database.dart';
+import 'package:la_corda_car_rental/models/carDetails.dart';
 import 'package:la_corda_car_rental/widget/block_builder_Cars.dart';
 
 class Available_Car extends StatefulWidget {
@@ -29,6 +30,16 @@ class Available_Car_Main extends StatefulWidget {
 class _Available_Car_MainState extends State<Available_Car_Main> {
   List<dynamic> cars = [];
 
+  fromListToCarDetails(int i) {
+    CarDetails tmp = CarDetails(
+        model: cars[i]["model"],
+        price_per_day: cars[i]["price_per_day"],
+        owner_id: cars[i]["owner_id"],
+        car_number: cars[i]["car_number"],
+        aadhar_card: cars[i]["aadhar_card"]);
+    return tmp;
+  }
+
   @override
   void initState() {
     Database.readCars().then((value) {
@@ -51,14 +62,14 @@ class _Available_Car_MainState extends State<Available_Car_Main> {
             appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
-              leading: IconButton(
-                onPressed: () async {},
+              /* leading: IconButton(
+                onPressed: () {},
                 icon: const Icon(
                   Icons.arrow_back,
                   color: Color(0xff003045),
                   size: 33,
                 ),
-              ),
+              ), */
               title: const Text(
                 'AVAILABLE CARS',
                 style: TextStyle(
@@ -73,8 +84,7 @@ class _Available_Car_MainState extends State<Available_Car_Main> {
             body: Scrollbar(
                 child: ListView.separated(
                     itemBuilder: (context, index) => Block_Builder(
-                          modelName: cars[index]["model"],
-                          pricePerDay: cars[index]["price_per_day"],
+                          carDetails: fromListToCarDetails(index),
                         ),
                     separatorBuilder: (context, index) => const SizedBox(
                           height: 10,

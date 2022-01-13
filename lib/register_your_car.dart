@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:la_corda_car_rental/database.dart';
+import 'package:la_corda_car_rental/home_page.dart';
 import 'package:la_corda_car_rental/widget/custom_button.dart';
 import 'package:la_corda_car_rental/widget/style_container_input.dart';
 
@@ -24,7 +25,14 @@ class _Register_CarState extends State<Register_Car> {
         backgroundColor: const Color(0xff61b49e),
         appBar: AppBar(
           leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Home(),
+                ),
+              );
+            },
             icon: const Icon(
               Icons.arrow_back,
               size: 35,

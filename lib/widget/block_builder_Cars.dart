@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Block_Builder extends StatelessWidget {
+  final String modelName;
+  final double pricePerDay;
+  Block_Builder({Key? key, required this.modelName, required this.pricePerDay})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     double device_width = MediaQuery.of(context).size.width;
@@ -17,7 +22,8 @@ class Block_Builder extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: device_width*0.1,right: device_width*0.1),
+            padding: EdgeInsets.only(
+                left: device_width * 0.1, right: device_width * 0.1),
             child: Row(
               children: [
                 Padding(
@@ -30,12 +36,12 @@ class Block_Builder extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Column(
-                      children: const [
+                      children: [
                         Padding(
                           padding: EdgeInsets.only(top: 5),
                           child: Text(
-                            'CAR RENT = 100£',
-                            style: TextStyle(
+                            'CAR RENT = ${pricePerDay.toString()} £',
+                            style: const TextStyle(
                                 fontFamily: 'Montserrat',
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -43,7 +49,7 @@ class Block_Builder extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'MODEL NAME = BMW',
+                          'MODEL NAME = ${modelName}',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold,
@@ -56,7 +62,11 @@ class Block_Builder extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.arrow_forward,size: 35,color: Color(0xff003045),),
+                  icon: const Icon(
+                    Icons.arrow_forward,
+                    size: 35,
+                    color: Color(0xff003045),
+                  ),
                 ),
               ],
             ),

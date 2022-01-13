@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:la_corda_car_rental/home_page.dart';
 import 'package:la_corda_car_rental/widget/custom_button_3.dart';
 
 class Edit_Profile extends StatefulWidget {
@@ -30,6 +31,18 @@ class Edit_Profile_Main extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xff61B49E),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Home()),
+            ),
+          ),
+          title: Text("Edit Profile"),
+          centerTitle: true,
+        ),
         body: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(

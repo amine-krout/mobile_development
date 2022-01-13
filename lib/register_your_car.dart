@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:la_corda_car_rental/database.dart';
 import 'package:la_corda_car_rental/widget/custom_button.dart';
 import 'package:la_corda_car_rental/widget/style_container_input.dart';
 
-class Register_Car extends StatelessWidget {
+class Register_Car extends StatefulWidget {
   const Register_Car({Key? key}) : super(key: key);
+
+  @override
+  State<Register_Car> createState() => _Register_CarState();
+}
+
+class _Register_CarState extends State<Register_Car> {
+  String model = '';
+  String carNumber = '';
+  String aadharCard = '';
+  double pricePerDay = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +44,10 @@ class Register_Car extends StatelessWidget {
         ),
         body: SafeArea(
             child: Center(
-              child: Column(
-          children: [
+          child: Column(
+            children: [
               const Padding(
-                padding: EdgeInsets.only(top: 80,right: 140),
+                padding: EdgeInsets.only(top: 80, right: 140),
                 child: Text(
                   'Car Model Name',
                   style: TextStyle(
@@ -46,9 +57,13 @@ class Register_Car extends StatelessWidget {
                   ),
                 ),
               ),
-              Customised_container('Put Your Car Model Name', TextInputType.name, false),
+              Customised_container(
+                  'Put Your Car Model Name', TextInputType.name, false,
+                  (newText) {
+                setState(() => model = newText);
+              }),
               const Padding(
-                padding: EdgeInsets.only(top: 5,right: 185),
+                padding: EdgeInsets.only(top: 5, right: 185),
                 child: Text(
                   'Car Number',
                   style: TextStyle(
@@ -58,9 +73,13 @@ class Register_Car extends StatelessWidget {
                   ),
                 ),
               ),
-              Customised_container('Put Your Car Number', TextInputType.number, false),
+              Customised_container(
+                  'Put Your Car Number', TextInputType.number, false,
+                  (newText) {
+                setState(() => carNumber = newText);
+              }),
               const Padding(
-                padding: EdgeInsets.only(top: 5,right: 180),
+                padding: EdgeInsets.only(top: 5, right: 180),
                 child: Text(
                   'Aadhar Card',
                   style: TextStyle(
@@ -70,9 +89,15 @@ class Register_Car extends StatelessWidget {
                   ),
                 ),
               ),
-              Customised_container('Put Your Aadhard Card', TextInputType.number, false),
+              Customised_container(
+                  'Put Your Aadhard Card', TextInputType.number, false,
+                  (newText) {
+                setState(() {
+                  aadharCard = newText;
+                });
+              }),
               const Padding(
-                padding: EdgeInsets.only(top: 5,right: 180),
+                padding: EdgeInsets.only(top: 5, right: 180),
                 child: Text(
                   'Rent Amount',
                   style: TextStyle(
@@ -82,15 +107,26 @@ class Register_Car extends StatelessWidget {
                   ),
                 ),
               ),
-              Customised_container('Put Your Rent Amount', TextInputType.name, false),
+              Customised_container(
+                  'Put Your Rent Amount Per Day', TextInputType.name, false,
+                  (newText) {
+                setState(() {
+                  pricePerDay = double.parse(newText);
+                });
+              }),
               Padding(
                 padding: const EdgeInsets.only(top: 50),
-                child: Custom_Button('REGISTER'),
+                child: Custom_Button('REGISTER CAR', () {
+                  Database.addCar(
+                      model: model,
+                      carNumber: carNumber,
+                      aadharCard: aadharCard,
+                      pricePerDay: pricePerDay);
+                }),
               )
-
-          ],
-        ),
-            )),
+            ],
+          ),
+        )),
       ),
     );
   }

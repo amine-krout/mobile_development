@@ -6,7 +6,8 @@ import 'package:la_corda_car_rental/services/auth.dart';
 import 'package:la_corda_car_rental/widget/custom_button_3.dart';
 
 class Hamburger_On extends StatefulWidget {
-  Hamburger_On({Key? key}) : super(key: key);
+  final BuildContext? parentContext;
+  Hamburger_On({Key? key, this.parentContext}) : super(key: key);
 
   @override
   _Hamburger_OnState createState() => _Hamburger_OnState();
@@ -17,13 +18,16 @@ class _Hamburger_OnState extends State<Hamburger_On> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Hamburger_On_main(),
+      home: Hamburger_On_main(
+        parentContext: widget.parentContext,
+      ),
     );
   }
 }
 
 class Hamburger_On_main extends StatelessWidget {
-  Hamburger_On_main({Key? key}) : super(key: key);
+  final BuildContext? parentContext;
+  Hamburger_On_main({Key? key, this.parentContext}) : super(key: key);
 
   final AuthService _auth = AuthService();
 
@@ -55,7 +59,7 @@ class Hamburger_On_main extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(
-                  context,
+                  parentContext ?? context,
                   MaterialPageRoute(
                     builder: (context) => Edit_Profile(),
                   ),

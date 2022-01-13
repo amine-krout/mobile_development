@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:la_corda_car_rental/available_car.dart';
 import 'package:la_corda_car_rental/home_page_hamburger_on.dart';
+import 'package:la_corda_car_rental/register_your_car.dart';
 import 'package:la_corda_car_rental/services/auth.dart';
+import 'package:la_corda_car_rental/start_page.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -35,7 +38,11 @@ class HomeMain extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xff61b49e),
-        drawer: Drawer(child: Drawer(child: Hamburger_On())),
+        drawer: Drawer(
+            child: Drawer(
+                child: Hamburger_On(
+          parentContext: context,
+        ))),
         appBar: AppBar(
           toolbarHeight: 90,
           backgroundColor: Colors.transparent,
@@ -91,7 +98,7 @@ class HomeMain extends StatelessWidget {
             ),
           ],
         ),
-        body: Container(),
+        body: Available_Car(),
       ),
     );
   }

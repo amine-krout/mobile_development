@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:la_corda_car_rental/database.dart';
 import 'package:la_corda_car_rental/widget/block_builder_Cars.dart';
 
 class Available_Car extends StatefulWidget {
@@ -18,8 +19,25 @@ class _Available_CarState extends State<Available_Car> {
   }
 }
 
-class Available_Car_Main extends StatelessWidget {
+class Available_Car_Main extends StatefulWidget {
   const Available_Car_Main({Key? key}) : super(key: key);
+
+  @override
+  State<Available_Car_Main> createState() => _Available_Car_MainState();
+}
+
+class _Available_Car_MainState extends State<Available_Car_Main> {
+  List<dynamic> cars = [];
+
+  @override
+  void initState() {
+    Database.readCars().then((value) {
+      setState(() {
+        cars = value;
+      });
+      print(cars);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +52,7 @@ class Available_Car_Main extends StatelessWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               leading: IconButton(
-                onPressed: () {},
+                onPressed: () async {},
                 icon: const Icon(
                   Icons.arrow_back,
                   color: Color(0xff003045),
@@ -42,7 +60,7 @@ class Available_Car_Main extends StatelessWidget {
                 ),
               ),
               title: const Text(
-                'AVAILABLE CAR',
+                'AVAILABLE CARS',
                 style: TextStyle(
                   fontFamily: 'Montserrat',
                   fontWeight: FontWeight.bold,
@@ -54,11 +72,14 @@ class Available_Car_Main extends StatelessWidget {
             ),
             body: Scrollbar(
                 child: ListView.separated(
-                    itemBuilder: (context, index) => Block_Builder(),
+                    itemBuilder: (context, index) => Block_Builder(
+                          modelName: cars[index]["model"],
+                          pricePerDay: cars[index]["price_per_day"],
+                        ),
                     separatorBuilder: (context, index) => const SizedBox(
                           height: 10,
                         ),
-                    itemCount: 10))),
+                    itemCount: cars.length))),
       ),
     );
   }

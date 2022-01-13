@@ -29,6 +29,10 @@ class AuthService {
     }
   }
 
+  void printFullUser() {
+    print(_auth.currentUser!.displayName);
+  }
+
   // Sign in with Email and Password
   Future loginWithEmailAndPassword(String email, String password) async {
     try {
@@ -43,11 +47,13 @@ class AuthService {
   }
 
   // Register with Email and Password
-  Future registerWithEmailAndPassword(String email, String password) async {
+  Future registerWithEmailAndPassword(
+      String email, String password, String fullName) async {
     try {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       User user = result.user!;
+      user.updateDisplayName(fullName);
       return _userFromFirebaseUser(user);
     } catch (e) {
       print(e.toString());
@@ -56,7 +62,7 @@ class AuthService {
   }
 
   // Sign out
-  Future SignOut() async {
+  Future signOut() async {
     try {
       return await _auth.signOut();
     } catch (e) {

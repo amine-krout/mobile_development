@@ -32,6 +32,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<LocalUser?>.value(
-        value: AuthService().user, initialData: null, child: const Wrapper());
+      value: AuthService().user,
+      initialData: null,
+      child: const Wrapper(),
+      catchError: (context, error) {
+        print(error.toString());
+      },
+    );
   }
 }

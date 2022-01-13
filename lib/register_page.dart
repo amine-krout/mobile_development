@@ -30,7 +30,7 @@ class _RegisterState extends State<Register> {
           appBar: AppBar(
             backgroundColor: Color(0xff003045),
             elevation: 0.0,
-            title: Text('Sign in to Brew Crew'),
+            title: Text('Register to La Corda Car Rental'),
             actions: <Widget>[
               TextButton.icon(
                 icon: Icon(Icons.person),
@@ -142,7 +142,7 @@ class _RegisterState extends State<Register> {
                       ),
                       child: TextButton(
                         child: const Text(
-                          'LOGIN',
+                          'REGISTER',
                           style: TextStyle(
                               fontFamily: 'Montserrat',
                               color: Color(0xff003045),
@@ -150,8 +150,9 @@ class _RegisterState extends State<Register> {
                               fontWeight: FontWeight.bold),
                         ),
                         onPressed: () async {
-                          dynamic result = await _auth
-                              .registerWithEmailAndPassword(email, password);
+                          dynamic result =
+                              await _auth.registerWithEmailAndPassword(
+                                  email, password, fullName);
                           if (result != null) {
                             print("success");
                             print(result.uid);

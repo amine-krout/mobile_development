@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:la_corda_car_rental/home_page_hamburger_on.dart';
+import 'package:la_corda_car_rental/services/auth.dart';
 
 class Home extends StatefulWidget {
-  const Home({ Key? key }) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -13,77 +14,85 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home_Main(),
-      
+      home: HomeMain(),
     );
   }
 }
-class Home_Main extends StatelessWidget {
-  const Home_Main({Key? key}) : super(key: key);
+
+class HomeMain extends StatelessWidget {
+  HomeMain({Key? key}) : super(key: key);
+
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     //double deviceWidth = MediaQuery.of(context).size.width;
     //double deviceHeight = MediaQuery.of(context).size.height;
 
+    double device_height = MediaQuery.of(context).size.height;
+    double device_width = MediaQuery.of(context).size.width;
+
     return SafeArea(
-        child: Scaffold(
-          backgroundColor: const Color(0xff61b49e),
-          appBar: AppBar(
-            toolbarHeight: 90,
-            leading: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context)=>Hamburger_On(),),);
-              },
-              icon: const Icon(
-                Icons.dehaze,
-                size: 35,
-                color: Color.fromARGB(204, 0, 48, 69),
+      child: Scaffold(
+        backgroundColor: const Color(0xff61b49e),
+        drawer: Drawer(child: Drawer(child: Hamburger_On())),
+        appBar: AppBar(
+          toolbarHeight: 90,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          flexibleSpace: Padding(
+            padding: const EdgeInsets.only(
+                left: 70, right: 100, top: 10, bottom: 10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(204, 0, 48, 69),
+                borderRadius: BorderRadius.circular(50),
               ),
-            ),
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            flexibleSpace: Padding(
-              padding: const EdgeInsets.only(
-                  left: 70, right: 10, top: 10, bottom: 10),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(204, 0, 48, 69),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Column(
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.only(top: 10, left: 30, right: 30),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Search Dropoff',
-                          hintStyle: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 22,
-                            color: Color(
-                              0xff61b49e,
-                            ),
+              child: Column(
+                children: const [
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, left: 30, right: 30),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Search Dropoff',
+                        hintStyle: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 22,
+                          color: Color(
+                            0xff61b49e,
                           ),
-                          border: InputBorder.none,
                         ),
-                        //keyboardType: TextInputt() ,
-                        style: TextStyle(
-                            fontFamily: 'Montserrat',
-                            fontSize: 22,
-                            color: Colors.white),
+                        border: InputBorder.none,
                       ),
+                      //keyboardType: TextInputt() ,
+                      style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 22,
+                          color: Colors.white),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-          body: Container(
+          actions: <Widget>[
+            TextButton.icon(
+              icon: const Icon(
+                Icons.person,
+                color: Color.fromARGB(204, 0, 48, 69),
+              ),
+              label: const Text(
+                'logout',
+                style: TextStyle(color: Color.fromARGB(204, 0, 48, 69)),
+              ),
+              onPressed: () async {
+                await _auth.signOut();
+              },
             ),
+          ],
         ),
-      );
+        body: Container(),
+      ),
+    );
   }
 }

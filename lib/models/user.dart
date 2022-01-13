@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 class LocalUser {
   final String uid;
 
-  LocalUser({required this.uid});
+  final UserInfo? userInfo;
+
+  LocalUser({required this.uid, this.userInfo});
 }

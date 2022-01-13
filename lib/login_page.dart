@@ -27,7 +27,7 @@ class _LoginState extends State<Login> {
         appBar: AppBar(
           backgroundColor: Color(0xff003045),
           elevation: 0.0,
-          title: Text('Sign in to Brew Crew'),
+          title: Text('Sign in to La Corda Car Rental'),
           actions: <Widget>[
             TextButton.icon(
               icon: Icon(Icons.person),
@@ -56,7 +56,7 @@ class _LoginState extends State<Login> {
                 const Padding(
                   padding: EdgeInsets.only(top: 70, bottom: 5, right: 170),
                   child: Text(
-                    'Username',
+                    'Email Address',
                     style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontSize: 19,
@@ -64,7 +64,8 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Customised_container(
-                    'Put Your Username', TextInputType.name, false, (newText) {
+                    'Put Your Email Address', TextInputType.name, false,
+                    (newText) {
                   setState(() => email = newText);
                 }),
                 /*Container(

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "67389612075",
+    "project_id": "mobile-development-e6a88",
+    "storage_bucket": "mobile-development-e6a88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67389612075:android:446676dbba1f3a56a40a6e",
+        "android_client_info": {
+          "package_name": "com.example.la_corda_car_rental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67389612075-hdsai2c3cb34l256b6oueg3rgb3kbs2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbfo515aD0r1owamCr-Bh5GH4AFWzN0EM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67389612075-hdsai2c3cb34l256b6oueg3rgb3kbs2o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

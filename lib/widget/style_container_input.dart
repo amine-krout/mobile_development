@@ -1,11 +1,14 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class Customised_container extends StatelessWidget {
   String hint_text;
   TextInputType a;
   bool b;
+  final FunctionStringCallback? callback;
 
-  Customised_container(this.hint_text, this.a, this.b);
+  Customised_container(this.hint_text, this.a, this.b, [this.callback]);
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +40,7 @@ class Customised_container extends StatelessWidget {
             fontSize: 18,
             color: Colors.white,
           ),
+          onChanged: callback,
         ),
       ),
     );

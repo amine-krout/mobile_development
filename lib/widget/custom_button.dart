@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Custom_Button extends StatelessWidget {
-  
   String button_text;
-  Custom_Button(this.button_text);
+  final VoidCallback? callback;
+  Custom_Button(this.button_text, [this.callback]);
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,9 @@ class Custom_Button extends StatelessWidget {
               fontFamily: 'Montserrat',
               color: Color(0xff003045),
               fontSize: 17,
-              fontWeight: FontWeight.bold
-              
-              ),
+              fontWeight: FontWeight.bold),
         ),
-        onPressed: () {},
+        onPressed: callback,
       ),
     );
   }

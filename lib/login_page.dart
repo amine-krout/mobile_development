@@ -1,11 +1,22 @@
-
 import 'package:flutter/material.dart';
+import 'package:la_corda_car_rental/services/auth.dart';
 import 'package:la_corda_car_rental/widget/custom_button.dart';
 import 'package:la_corda_car_rental/widget/style_container_input.dart';
 import 'package:la_corda_car_rental/widget/text_button.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class Login extends StatefulWidget {
+  final Function? toggleView;
+  const Login({Key? key, this.toggleView}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final AuthService _auth = AuthService();
+
+  String email = '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +24,27 @@ class Login extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 97, 180, 158),
+        appBar: AppBar(
+          backgroundColor: Color(0xff003045),
+          elevation: 0.0,
+          title: Text('Sign in to Brew Crew'),
+          actions: <Widget>[
+            TextButton.icon(
+              icon: Icon(Icons.person),
+              label: Text('Register'),
+              onPressed: () => widget.toggleView!(),
+            ),
+          ],
+        ),
         body: SafeArea(
             child: Padding(
           padding: const EdgeInsets.all(50),
           child: Center(
             child: Column(
               children: [
-                const Padding (
+                const Padding(
                   padding: EdgeInsets.only(right: 170),
-                  child:Text(
+                  child: Text(
                     ('Login'),
                     style: TextStyle(
                         fontFamily: 'Montserrat',
@@ -40,7 +63,10 @@ class Login extends StatelessWidget {
                         color: Color(0xff045977)),
                   ),
                 ),
-                Customised_container('Put Your Username',TextInputType.name,false),
+                Customised_container(
+                    'Put Your Username', TextInputType.name, false, (newText) {
+                  setState(() => email = newText);
+                }),
                 /*Container(
                     height: 55,
                     width: 340,
@@ -89,12 +115,23 @@ class Login extends StatelessWidget {
                         onTap: () {},
                       ),
                     )),*/
-                Customised_container('Type Your Password', TextInputType.text, true),
+                Customised_container(
+                    'Type Your Password', TextInputType.text, true, (newText) {
+                  setState(() => password = newText);
+                }),
                 Padding(
-                  padding: const EdgeInsets.only(top: 60),
-                  child: 
-                  Custom_Button('LOGIN',)
-                  /* Container(
+                    padding: const EdgeInsets.only(top: 60),
+                    child: Custom_Button('LOGIN', () async {
+                      dynamic result = await _auth.loginWithEmailAndPassword(
+                          email, password);
+                      if (result != null) {
+                        print("success");
+                        print(result.uid);
+                      } else {
+                        print("error signed in");
+                      }
+                    })
+                    /* Container(
                     height: 55,
                     width: 110,
                     decoration: BoxDecoration(
@@ -110,14 +147,13 @@ class Login extends StatelessWidget {
                       onPressed: () {},
                     ),
                   ),*/
-                ),
+                    ),
                 const Padding(
                   padding: EdgeInsets.only(top: 40),
                   child: Text(
                     'Not Registred ?',
                     style: TextStyle(
                       fontFamily: 'Montserrat',
-                      
                       fontSize: 19,
                       color: Color(0xff045977),
                     ),

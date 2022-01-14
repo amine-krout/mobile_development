@@ -33,7 +33,7 @@ class _Available_Car_MainState extends State<Available_Car_Main> {
   fromListToCarDetails(int i) {
     CarDetails tmp = CarDetails(
         model: cars[i]["model"],
-        price_per_day: cars[i]["price_per_day"],
+        price_per_day: cars[i]["price_per_day"].toDouble(),
         owner_id: cars[i]["owner_id"],
         car_number: cars[i]["car_number"],
         aadhar_card: cars[i]["aadhar_card"]);

@@ -74,81 +74,83 @@ class Car_Details_Main extends StatelessWidget {
             ],
           ),
         ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(30),
-              child: Container(
-                height: device_width * 0.55,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xffE9E0B2),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(30),
+                child: Container(
+                  height: device_width * 0.55,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Color(0xffE9E0B2),
+                  ),
+                  child: Image.asset('assets/images/car.png'),
                 ),
-                child: Image.asset('assets/images/car.png'),
               ),
-            ),
-            Container(
-              height: device_height * 0.35,
-              width: device_width * 0.8,
-              decoration: BoxDecoration(
-                color: const Color(0xff003045),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Column(
-                children: [
-                  Center(
-                    child: Text(
-                      'Model: ${carDetails.model}',
-                      style: const TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          wordSpacing: -5,
-                          color: Color(0xffE9E0B2)),
+              Container(
+                height: device_height * 0.22,
+                width: device_width * 0.8,
+                decoration: BoxDecoration(
+                  color: const Color(0xff003045),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Column(
+                  children: [
+                    Center(
+                      child: Text(
+                        'Model: ${carDetails.model}',
+                        style: const TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            wordSpacing: -5,
+                            color: Color(0xffE9E0B2)),
+                      ),
                     ),
-                  ),
-                  Center(
-                    child: Text(
-                      'Car Number: ${carDetails.car_number}',
-                      style: const TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          wordSpacing: -5,
-                          color: Color(0xffE9E0B2)),
+                    Center(
+                      child: Text(
+                        'Car Number: ${carDetails.car_number}',
+                        style: const TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            wordSpacing: -5,
+                            color: Color(0xffE9E0B2)),
+                      ),
                     ),
-                  ),
-                  Center(
-                    child: Text(
-                      'Aadhar Card: ${carDetails.aadhar_card}',
-                      style: const TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25,
-                          wordSpacing: -5,
-                          color: Color(0xffE9E0B2)),
+                    Center(
+                      child: Text(
+                        'Aadhar Card: ${carDetails.aadhar_card}',
+                        style: const TextStyle(
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                            wordSpacing: -5,
+                            color: Color(0xffE9E0B2)),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 15),
-              child: Text(
-                'TOTAL AMOUNT : ' + carDetails.price_per_day.toString() + '£',
-                style: const TextStyle(
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    wordSpacing: 0,
-                    color: Color(0xff003045)),
+              Padding(
+                padding: EdgeInsets.only(top: 15),
+                child: Text(
+                  'TOTAL AMOUNT : ' + carDetails.price_per_day.toString() + '£',
+                  style: const TextStyle(
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      wordSpacing: 0,
+                      color: Color(0xff003045)),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Custom_Button('PAY'),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Custom_Button('PAY'),
+              ),
+            ],
+          ),
         ),
       ),
     );

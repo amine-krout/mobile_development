@@ -1,12 +1,10 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class Customised_container extends StatelessWidget {
   String hint_text;
   TextInputType a;
   bool b;
-  final FunctionStringCallback? callback;
+  final dynamic? callback;
 
   Customised_container(this.hint_text, this.a, this.b, [this.callback]);
 

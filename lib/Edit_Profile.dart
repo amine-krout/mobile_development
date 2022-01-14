@@ -60,7 +60,7 @@ class Edit_Profile_Main extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(30),
                 child: Container(
-                  height: device_width * 0.55,
+                  width: device_width,
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Color(0xffE9E0B2),
@@ -72,11 +72,10 @@ class Edit_Profile_Main extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: device_height * 0.2),
                 child: Container(
-                  height: 100,
-                  width: 194,
                   child: Column(
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(
                             Icons.car_repair,
@@ -104,6 +103,7 @@ class Edit_Profile_Main extends StatelessWidget {
                         ],
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(
                             Icons.attach_money,
